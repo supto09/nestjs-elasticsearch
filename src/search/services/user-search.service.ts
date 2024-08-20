@@ -35,10 +35,11 @@ export default class UserSearchService {
             {
               multi_match: {
                 query: searchText || '*', // Full-text search
-                fields: ['firstName^2', 'lastName^2', 'email'], // Fields to search with optional boosting
-                fuzziness: 'AUTO', // Handle approximate matches
-                operator: 'OR', // Match any of the provided terms
-                type: 'most_fields', // Handle partial matches across multiple fields
+                fields: ['firstName^3', 'lastName^3', 'email'],
+                type: 'best_fields',
+                fuzziness: 'AUTO',
+                max_expansions: 50,
+                operator: 'or',
               },
             },
             {
