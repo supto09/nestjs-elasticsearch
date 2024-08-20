@@ -1,4 +1,4 @@
-export class UserSearchQueryDto {
+export class SearchQueryDto {
   searchText?: string;
   sortBy?: string;
   order?: 'asc' | 'desc';

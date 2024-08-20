@@ -22,6 +22,7 @@ import {
           database: postgresConfig.db,
           entities: [], // entities will be imported from other modules
           synchronize: true, // Set to false in production
+          autoLoadEntities: true,
         };
       },
       inject: [ConfigService],

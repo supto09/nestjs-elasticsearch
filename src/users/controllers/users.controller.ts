@@ -1,15 +1,17 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
+import { SearchUserDto } from '@/users/dto/search-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -23,6 +25,17 @@ export class UsersController {
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Get('search')
+  async searchUsers(@Query() query: SearchUserDto) {
+    return await this.usersService.search({
+      searchText: query.searchText,
+      sortBy: query.sortBy,
+      order: query.order,
+      page: query.page,
+      size: query.size,
+    });
   }
 
   @Get(':id')

@@ -5,6 +5,7 @@ import {
   ELASTIC_CONFIG_KEY,
   ElasticConfigType,
 } from '@/config/configs/elastic.config';
+import UserSearchService from '@/search/services/user-search.service';
 
 @Module({
   imports: [
@@ -25,5 +26,7 @@ import {
       inject: [ConfigService],
     }),
   ],
+  providers: [UserSearchService],
+  exports: [UserSearchService],
 })
 export class SearchModule {}

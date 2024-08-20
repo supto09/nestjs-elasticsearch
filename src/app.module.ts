@@ -10,8 +10,8 @@ import { HealthModule } from './health/health.module';
   imports: [
     ConfigModule,
     SearchModule,
-    UsersModule,
     DatabaseModule,
+    UsersModule,
     HealthModule,
   ],
   controllers: [],
